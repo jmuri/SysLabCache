@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <assert.h>
+#include (file.h)
+#include "Cache.h"
 //#include "CacheTest.c"
+
 
 
 struct cache{
@@ -10,6 +13,10 @@ int blockOffsetFieldLength;
 unsigned int **tagArray; 
 int **lruArray;
 };
+
+FILE* traceFP;
+
+char* getNextAddress()
 
 
 int whichSet(){
@@ -41,7 +48,9 @@ int updateOnMiss(){
 }
 
 int main(int argc, int argv[]){
-	//argv[1]=set associativity
+	int hit
+
+	//argv[1] = set associativity
 	//argv[2] = line size in bytes
 	//argv[3] = total cache size in kbytes
 	//run file >a.out K L C traceFile
