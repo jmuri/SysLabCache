@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <assert.h>
-#include "CacheTest.c"
 
 
 struct cache{
@@ -9,6 +8,7 @@ int setNumFieldLength;
 int blockOffsetFieldLength;
 unsigned int **tagArray; 
 int **lruArray;
+};
 
 FILE* traceFP;
 
