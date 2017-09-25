@@ -48,7 +48,7 @@ int updateOnMiss(){
 }
 
 int main(int argc, int argv[]){
-	int hit
+	int hitRate;
 
 	//argv[1] = set associativity
 	//argv[2] = line size in bytes
