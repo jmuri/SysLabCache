@@ -1,16 +1,7 @@
 #include <stdio.h>
 #include <assert.h>
-#include (file.h)
-#include "Cache.h"
-#include "CacheTest.c"
+//#include "CacheTest.c"
 
-
-struct cache{
-int tagFieldLength;
-int setNumFieldLength;
-int blockOffsetFieldLength;
-unsigned int **tagArray; 
-int **lruArray;
 
 FILE* traceFP;
 
