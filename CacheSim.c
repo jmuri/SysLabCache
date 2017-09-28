@@ -5,30 +5,29 @@
 
 
 
-struct cache{
-int tagFieldLength;
-int setNumFieldLength;
-int blockOffsetFieldLength;
-unsigned int **tagArray; 
-int **lruArray;
-};
-
-FILE* traceFP;
-
-
-int readTrace(FILE *fp){
+//takes trace file and returns hit rate
+int readTrace(char *file){
+	printf("Reading trace, from %s \n", file);
+	FILE *fp;
 	unsigned int *address;
 
+	fp = fopen(file, "r");
+
+
 	while( fscanf(fp, "%X", address) != EOF){
-		printf("%X/n", *address);
+		printf("%X \n", *address);
+		accessCache(*address);
 	}
+
+	fclose(fp);
 }
 
-
-int whichSet(){
+//Outputs the cache set in which the address falls
+int whichSet(int address){
 	return 0;
 }
 
+//returns 0 or 1 based on wether it is a hit or miss
 int accessCache(int address){
 	return 0;
 }
@@ -40,26 +39,33 @@ int buildCache(int k, int l, int c){
 	return 0;
 }
 
+//Outputs the number of bits in the set index  field of theaddress
 int setIndexLength(){
 	return 0;
 }
 
+//Outputs  the  number  of  bits  in  the  line  o set field  of  the address
 int offsetLength(){
 	return 0;
 }
 
+//Outputs the tag bits associated with the address
 int tagBits(){
 	return 0;
 }
 
+// If there is a hit, this outputs the cache way in which the accessed line can be found; 
+//it returns -1if there is a cache miss
 int hitWay(){
 	return 0;
 }
 
+//Updates the tagArray and lruArray upon a hit.  This function is only called on a cache hi
 int updateOnHit(){
 	return 0;
 }
 
+// Updates the tagArray and lruArray upon a miss.  This function is only called on a cache miss
 int updateOnMiss(){
 	return 0;
 }
@@ -72,14 +78,14 @@ int updateOnMiss(){
 int main(int argc, char *argv[]){
 	int hitRate;
 
-	FILE *fp;
-	fp = fopen(argv[4], "r");
-	printf("Start, %d arguements: K:%d, L:%d, C:%d File:%s/n", argc, *argv[1], *argv[2], *argv[3], argv[4]);
 
 
-	hitRate = readTrace(fp);//gives segfault
+	printf("Start, %d arguements: K:%d, L:%d, C:%d File:%s \n", argc, *argv[1], *argv[2], *argv[3], argv[4]);
+	
+
+	hitRate = readTrace(argv[4]);//gives segfault
 
 
-	fclose(fp);printf("Done\n");
+	printf("Done\n");
 	return 0;
 }
