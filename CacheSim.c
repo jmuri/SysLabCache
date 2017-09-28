@@ -24,7 +24,7 @@ int readTrace(char *file){
 
 //Takes the base-two log of the address passed 
 int logBaseTwo(int quantity){
-	assert(quantity!=NULL);
+	assert(quantity>0);
 	int x = 0;
 	int quotient = quantity/(2^x);
 	while(quotient>1){
@@ -52,19 +52,14 @@ int buildCache(int k, int l, int c){
 }
 
 //Outputs the number of bits in the set index  field of theaddress
-int setIndexLength(int k, int l, int c){
-	int setLength = logBaseTwo(c/(l*k));
-	int offsetSize = logBaseTwo(k);
-	assert((32 - setLength - offsetSize) > 0);
-	return setLength;
+int setIndexLength(){
+	//poop
+	return 0;
 }
 
 //Outputs  the  number  of  bits  in  the  line  o set field  of  the address
-int offsetLength(int k, int l, int c){
-	int setLength = logBaseTwo(c/(l*k));
-	int offsetSize = logBaseTwo(k);
-	assert((32 - setLength - offsetSize) > 0);
-	return offsetSize;
+int offsetLength(){
+	return 0;
 }
 
 //Outputs the tag bits associated with the address
@@ -95,7 +90,10 @@ int updateOnMiss(){
 	//run file >a.out K L C traceFile
 int main(int argc, char *argv[]){
 	int hitRate;
-	assert((argv[1]!=NULL)&&(argv[2]!=NULL)&&(argv[3]!=NULL)&&(argv[4]!=NULL);
+	assert(argv[1]>0);
+	assert(argv[2]>0);
+	assert(arvg[3]>0);
+	assert(argv[4]>0);
 
 
 
