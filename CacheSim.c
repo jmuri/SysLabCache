@@ -11,22 +11,27 @@ int readTrace(char *file){
 	FILE *fp;
 	unsigned int *address;
 
-	fp = fopen(file, "a");
-	printf("File Open\n");
+	fp = fopen(file, "r");
 
-	
-	fscanf(fp, "%X", address);
-	printf("%X \n", *address);
-	/*
+
 	while( fscanf(fp, "%X", address) != EOF){
 		printf("%X \n", *address);
 		accessCache(*address);
 	}
-	*/
-	
-
 
 	fclose(fp);
+}
+
+//Takes the base-two log of the address passed 
+int logBaseTwo(int quantity){
+	assert(quantity!=NULL);
+	int x = 0;
+	int quotient = quantity/(2^x);
+	while(quotient>1){
+		x++;
+		quotient = quantity/(2^x);
+	}
+	return x;
 }
 
 //Outputs the cache set in which the address falls
@@ -84,10 +89,13 @@ int updateOnMiss(){
 	//run file >a.out K L C traceFile
 int main(int argc, char *argv[]){
 	int hitRate;
+	assert((argv[1]!=NULL)&&(argv[2]!=NULL)&&(argv[3]!=NULL)&&(argv[4]!=NULL);
+
 
 
 	printf("Start, %d arguements: K:%d, L:%d, C:%d File:%s \n", argc, *argv[1], *argv[2], *argv[3], argv[4]);
-	buildCache((int)argv[1], (int)argv[2], (int)argv[3]);
+	
+
 	hitRate = readTrace(argv[4]);//gives segfault
 
 
