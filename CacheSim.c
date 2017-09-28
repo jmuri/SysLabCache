@@ -53,6 +53,7 @@ int buildCache(int k, int l, int c){
 
 //Outputs the number of bits in the set index  field of theaddress
 int setIndexLength(){
+	//poop
 	return 0;
 }
 
