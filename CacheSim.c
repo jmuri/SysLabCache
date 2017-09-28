@@ -11,13 +11,20 @@ int readTrace(char *file){
 	FILE *fp;
 	unsigned int *address;
 
-	fp = fopen(file, "r");
+	fp = fopen(file, "a");
+	printf("File Open\n");
 
-
+	
+	fscanf(fp, "%X", address);
+	printf("%X \n", *address);
+	/*
 	while( fscanf(fp, "%X", address) != EOF){
 		printf("%X \n", *address);
 		accessCache(*address);
 	}
+	*/
+	
+
 
 	fclose(fp);
 }
@@ -79,10 +86,8 @@ int main(int argc, char *argv[]){
 	int hitRate;
 
 
-
 	printf("Start, %d arguements: K:%d, L:%d, C:%d File:%s \n", argc, *argv[1], *argv[2], *argv[3], argv[4]);
-	
-
+	buildCache((int)argv[1], (int)argv[2], (int)argv[3]);
 	hitRate = readTrace(argv[4]);//gives segfault
 
 
